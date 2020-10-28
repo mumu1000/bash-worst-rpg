@@ -1,0 +1,5 @@
+combat:
+load game vars if needed with GAME_ prefix
+load vars from player with a PLAYER_ prefix
+load vars from opponents with a OPPENENT_X_ prefix
+sync inventory/equiment effects (funct to concat )

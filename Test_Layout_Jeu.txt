@@ -1,0 +1,79 @@
+Palier d'armes (Basic ... Legendary Godlike Chaos? )
+Chaque partie augmente les limites de customisation (tout customisable, système de run longue)
+différents types de currency a récup pour la customisation (tiers, influent sur un niveau meta superieur par tier)
+Armes avec effets particuliers dépendant de tout 
+une arme d'un certain niveau donne le meme niveau de puissance qu'une autre de mm niveau (effets de l'arme comprise, need un facteur de puissance par effet)
+Facteurs d'influence perso, village, région, pays, alliance, continent, dimention  <- echelle géo
+Champions dans chaque echelle géo (puissance altérée par facteur customisation) + fort + imprévisible
+Les equipements ont un niveau de currency qui fera gagner ces currency en cas de décès si équipés (prédiction: certaines armes seront sacrificielles, grosse currency sur le décès mais stats faible donc incitation au suicide pour gagner les currency)
+
+++
+Quêtes dépendant du niveau du joueur (et de sa réputation) (si trop bas nothing, si trop haut HL)
+Score de base de réputation = niveau de puissance/menace = niveau observé du joueur et niveau observé de son équipement (possibilité de dissimuler)
+niveau de dissimulation correspond à à quel niveau on peut apparaitre sur toutes ses compétences (3 en dissimulation = -3 apparent sur toutes ses compétences si besoin)
+
+
+
+________
+Générateur d'arme
+Générateur de perso
+Générateur de monstre (réutilisable mob région ou Champion)
+Générateur de map (layout, relations politique, reward locations)
+Générateur de quête
+
+
+________
+Datamodel
+>strong link
+-weak link
+()Properties
+|has one and only one
+
+SAVEFILE:
+Save|Game|Map
+>Global Properties
+>Currency
+>Continent
+ >Country
+  >Region
+   >Locality
+    >Entities
+     >Loot
+     >Stats
+    >Objects
+     >Inventory
+      >Item
+>Player
+ >Inventory
+  >Item
+ >Equipment
+  >Item
+ >Stats
+
+GAMEDATA:
+Item Type
+Stat
+Bonus
+Currencies
+
+
+
+GAMEFUNCTIONS:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,12 @@
+weapon
+second_hand
+helmet
+chestplate
+shoulders
+gloves
+legs
+boots
+belt
+talisman
+ring
+token

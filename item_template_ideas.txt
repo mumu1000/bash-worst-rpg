@@ -1,0 +1,44 @@
+Ce qu'il faut replace quand on template l'attribut
+__ATTRIBUTE_LEVEL__
+__ITEM_QUALITY__
+
+Ce qu'il faut prendre en compte dans le calcul de puissance de l'attribut
+
+
+Ce qu'on a comme info au départ de la création d'item
+ITEM_PATH
+ITEM_TYPE determined during exec start
+ITEM_QUALITY
+ITEM_LEVEL
+ITEM_ATTR_POINTS  (counter a décrémenter au fur et a mesure de l'application de templates)
+
+Ce qu'on a au départ de l'application d'un attribute template
+ITEM_PATH
+ATTRIBUTE_LEVEL
+ITEM_LEVEL
+ITEM_QUALITY
+
+
+IDEES
+templating conditionnel: avoir une sémantique pour changer l'effet soumis a une condition préalable
+(item quality surtout) et pas se trimballer du code statique jamais executé
+
+Attributs (par exemple custom) a la fin du fichier final du template pour maintenir des compteurs internes par exemple ou les propriétés de l'arme
+
+A FAIRE
+Creation d'une fonction qui prend les params d'items et fait une base (skeleton) d'item a partir 
+Creation d'une fonction qui prend tout en param et applique un attr template a un path donnée
+
+
+WORKFLOW DE CREATION D'UN ITEM
+En entrée toutes les infos d'au dessus
+On va prendre au hasard un type d'attribut compatible avec le type d'item 
+(parse item_types directory to find item_type and create skeleton using create item funct and item_type template found)
+déterminer lequel et son niveau via attr_types type_selected (ITEM_ATTR_POINTS / attr cost from attr_types -> max)
+appliquer le template avec la function
+si il reste peu de ITEM_ATTR_POINTS alors on les (discard ou micro bonus simple pour eviter un pb de boucle longue)
+
+Pour ON_EQUIPPED et ON_INVENTORY avec leurs reverse functions seront jouées a part et en ordre inversé sur l
+
+Un item est un directory qui va servir de base pour a la fois la concatenation des effets et le sourcing des effets non concatenables (on equip et assimilés)
+
