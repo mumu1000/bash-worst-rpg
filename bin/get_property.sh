@@ -4,5 +4,5 @@
 #Usage str getproperty str propname str pathpropfile
 
 get_property() {
-    grep -oP "(?<=^${1} ).*$" "${2}" 2>/dev/null | head -n 1
+    grep -oP "(?<=^#${1} ).*$" "${2}" 2>/dev/null | head -n 1
 }
