@@ -1,0 +1,200 @@
+###BEGIN__ON_HIT__
+(( ###ATTR_ID###_hit_counter++ ))
+(( PLAYER_TEMP_min_melee_damage += ###ATTR_LEVEL### ))
+
+###IF ITEM_QUALITY > 2
+if (( (###ATTR_ID###_hit_counter % 5) == 0 )); then
+(( PLAYER_TEMP_melee_armor += ###ATTR_LEVEL### )) ; fi
+###ENDIF
+
+###IF ITEM_QUALITY > 4
+if (( (###ATTR_ID###_hit_counter % 10) == 0 )); then
+(( PLAYER_TEMP_max_melee_damage += 25 * ###ATTR_LEVEL### )) ; fi
+###ENDIF
+
+###DELEGATE ON_BATTLE_BEGIN
+###ATTR_ID###_hit_counter=0
+
+###DELEGATE ON_BATTLE_END
+unset ###ATTR_ID###_hit_counter
+
+###DELEGATE ON_RELOAD
+(( PLAYER_TEMP_min_melee_damage += ###ATTR_ID###_hit_counter * ###ATTR_LEVEL### ))
+
+###IF ITEM_QUALITY > 2
+(( PLAYER_TEMP_melee_armor += (###ATTR_ID###_hit_counter / 5) * ###ATTR_LEVEL### ))
+###ENDIF
+
+###IF ITEM_QUALITY > 4
+(( PLAYER_TEMP_max_melee_damage += (###ATTR_ID###_hit_counter / 10) * 25 * ###ATTR_LEVEL### ))
+###ENDIF
+
+###DELEGATE property_list
+###ATTR_ID### enraging ###ATTR_LEVEL### ON_HIT
+###ENDDELEGATE
+###END__ON_HIT__
+
+
+
+
+
+###BEGIN__ON_STRIKE__
+
+(( ###ATTR_ID###_strike_counter++ ))
+(( PLAYER_TEMP_min_melee_damage += ###ATTR_LEVEL### ))
+
+###IF ITEM_QUALITY > 2
+if (( (###ATTR_ID###_strike_counter % 5) == 0 )); then
+(( PLAYER_TEMP_melee_armor += ###ATTR_LEVEL### )) ; fi
+###ENDIF
+
+###IF ITEM_QUALITY > 4
+if (( (###ATTR_ID###_strike_counter % 10) == 0 )); then
+(( PLAYER_TEMP_max_melee_damage += 25 * ###ATTR_LEVEL### )) ; fi
+###ENDIF
+
+###DELEGATE ON_BATTLE_BEGIN
+###ATTR_ID###_strike_counter=0
+
+###DELEGATE ON_BATTLE_END
+unset ###ATTR_ID###_strike_counter
+
+###DELEGATE ON_RELOAD
+(( PLAYER_TEMP_min_melee_damage += ###ATTR_ID###_strike_counter * ###ATTR_LEVEL### ))
+
+###IF ITEM_QUALITY > 2
+(( PLAYER_TEMP_melee_armor += (###ATTR_ID###_strike_counter / 5) * ###ATTR_LEVEL### ))
+###ENDIF
+
+###IF ITEM_QUALITY > 4
+(( PLAYER_TEMP_max_melee_damage += (###ATTR_ID###_strike_counter / 10) * 25 * ###ATTR_LEVEL### ))
+###ENDIF
+
+###DELEGATE property_list
+###ATTR_ID### enraging ###ATTR_LEVEL### ON_STRIKE
+###ENDDELEGATE
+
+###END__ON_STRIKE__
+
+
+###BEGIN__ON_BATTLE_BEGIN__
+
+(( PLAYER_TEMP_min_melee_damage += GAME_OPPONENT_COUNT * 5 * ###ATTR_LEVEL### ))
+###IF ITEM_QUALITY > 2
+(( PLAYER_TEMP_melee_armor += GAME_OPPONENT_COUNT * 2 * ###ATTR_LEVEL### ))
+###IF ITEM_QUALITY > 4
+(( PLAYER_TEMP_max_melee_damage += GAME_OPPONENT_COUNT * 13 * ###ATTR_LEVEL### ))
+
+###DELEGATE ON_RELOAD
+(( PLAYER_TEMP_min_melee_damage += GAME_OPPONENT_COUNT * 5 * ###ATTR_LEVEL### ))
+###IF ITEM_QUALITY > 2
+(( PLAYER_TEMP_melee_armor += GAME_OPPONENT_COUNT * 2 * ###ATTR_LEVEL### ))
+###IF ITEM_QUALITY > 4
+(( PLAYER_TEMP_max_melee_damage += GAME_OPPONENT_COUNT * 13 * ###ATTR_LEVEL### ))
+
+###DELEGATE property_list
+###ATTR_ID### enraging ###ATTR_LEVEL### ON_BATTLE_BEGIN
+###ENDDELEGATE
+
+###END__ON_BATTLE_BEGIN__
+
+###BEGIN__ON_BATTLE_END__
+(( PLAYER_min_melee_damage += GAME_OPPONENT_COUNT * ###ATTR_LEVEL### ))
+###IF ITEM_QUALITY > 2
+(( PLAYER_melee_armor += GAME_OPPONENT_COUNT * ###ATTR_LEVEL### ))
+###IF ITEM_QUALITY > 4
+(( PLAYER_max_melee_damage += GAME_OPPONENT_COUNT * ###ATTR_LEVEL### ))
+
+###DELEGATE property_list
+###ATTR_ID### enraging ###ATTR_LEVEL### ON_BATTLE_END
+###ENDDELEGATE
+
+###END__ON_BATTLE_END__
+
+
+###BEGIN__ON_KILL__
+(( ###ATTR_ID###_kill_counter++ ))
+(( PLAYER_TEMP_min_melee_damage += 10 * ###ATTR_LEVEL### ))
+
+###IF ITEM_QUALITY > 2
+if (( (###ATTR_ID###_kill_counter % 5) == 0 )); then
+(( PLAYER_TEMP_melee_armor += 10 * ###ATTR_LEVEL### )) ; fi
+###ENDIF
+
+###IF ITEM_QUALITY > 4
+if (( (###ATTR_ID###_kill_counter % 10) == 0 )); then
+(( PLAYER_TEMP_max_melee_damage += 100 * ###ATTR_LEVEL### )) ; fi
+###ENDIF
+
+###DELEGATE ON_BATTLE_BEGIN
+###ATTR_ID###_kill_counter=0
+
+###DELEGATE ON_BATTLE_END
+unset ###ATTR_ID###_kill_counter
+
+###DELEGATE ON_RELOAD
+(( PLAYER_TEMP_min_melee_damage += ###ATTR_ID###_kill_counter * 10 * ###ATTR_LEVEL### ))
+
+###IF ITEM_QUALITY > 2
+(( PLAYER_TEMP_melee_armor += (###ATTR_ID###_kill_counter / 5) * 10 * ###ATTR_LEVEL### ))
+###ENDIF
+
+###IF ITEM_QUALITY > 4
+(( PLAYER_TEMP_max_melee_damage += (###ATTR_ID###_kill_counter / 10) * 100 * ###ATTR_LEVEL### ))
+###ENDIF
+
+###DELEGATE property_list
+###ATTR_ID### enraging ###ATTR_LEVEL### ON_KILL
+###ENDDELEGATE
+###END__ON_KILL__
+
+
+###BEGIN__ON_DEATH_INV__
+echo "Your level ###ATTR_LEVEL### rage dissipates as you slowly fade into death"
+###END__ON_DEATH_INV__
+
+
+###BEGIN__ON_DEATH_EQU__
+echo "Your level ###ATTR_LEVEL### rage dissipates as you slowly fade into death"
+###END__ON_DEATH_EQU__
+
+
+###BEGIN__ON_LEVELUP_EQU__
+(( PLAYER_min_melee_damage += ###ATTR_LEVEL### ))
+###IF ITEM_QUALITY > 2
+(( PLAYER_melee_armor += ###ATTR_LEVEL### ))
+###IF ITEM_QUALITY > 4
+(( PLAYER_max_melee_damage += ###ATTR_LEVEL### ))
+
+###DELEGATE property_list
+###ATTR_ID### enraging ###ATTR_LEVEL### ON_LEVELUP_EQU
+###ENDDELEGATE
+###END__ON_LEVELUP_EQU__
+
+
+###BEGIN__ON_LEVELUP_INV__
+(( PLAYER_min_melee_damage += ###ATTR_LEVEL### ))
+###IF ITEM_QUALITY > 2
+(( PLAYER_melee_armor += ###ATTR_LEVEL### ))
+###IF ITEM_QUALITY > 4
+(( PLAYER_max_melee_damage += ###ATTR_LEVEL### ))
+
+###DELEGATE property_list
+###ATTR_ID### enraging ###ATTR_LEVEL### ON_LEVELUP_EQU
+###ENDDELEGATE
+###END__ON_LEVELUP_INV__
+
+
+###BEGIN__ON_EQUIPPED__
+###END__ON_EQUIPPED__
+
+
+###BEGIN__ON_UNEQUIPPED__
+###END__ON_UNEQUIPPED__
+
+###BEGIN__ON_INVENTORY__
+###END__ON_INVENTORY__
+
+
+###BEGIN__ON_UNINVENTORY__
+###END__ON_UNINVENTORY__
