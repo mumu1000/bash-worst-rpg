@@ -14,6 +14,8 @@ ITEM_ATTR_POINTS  (counter a décrémenter au fur et a mesure de l'application d
 
 Ce qu'on a au départ de l'application d'un attribute template
 ITEM_PATH
+ATTRIBUTE_TYPE
+ATTRIBUTE_TRIGGER
 ATTRIBUTE_LEVEL
 ITEM_LEVEL
 ITEM_QUALITY

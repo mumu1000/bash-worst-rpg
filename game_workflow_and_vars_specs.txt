@@ -2,4 +2,24 @@ combat:
 load game vars if needed with GAME_ prefix
 load vars from player with a PLAYER_ prefix
 load vars from opponents with a OPPENENT_X_ prefix
-sync inventory/equiment effects (funct to concat )
+sync inventory/equipment effects (funct to concat and make actual functions)
+
+ON_BATTLE_BEGIN
+ON_RELOAD
+ON_HIT ON_STRIKE ON_KILL ON_DEATH ON_RELOAD
+ON_BATTLE_END
+
+
+
+
+Vars combat:
+GAME_OPPONENT_COUNT
+
+PLAYER_PRIMARY_TARGETS
+PLAYER_SECONDARY_TARGETS
+PLAYER_TERTIARY_TARGETS
+
+
+OPPONENT_X_LIFE
+OPPONENT_X_MAXLIFE
+OPPONENT_X_ARMOR

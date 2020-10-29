@@ -1,40 +1,73 @@
-#BEGIN__ON_HIT__
-#END__ON_HIT__
+###BEGIN__ON_HIT__
+(( ###ATTR_ID###_hit_counter++ ))
+(( PLAYER_TEMP_melee_damage += ###ATTR_LEVEL### ))
+
+###IF ITEM_QUALITY > 2
+if (( (###ATTR_ID###_hit_counter % 5) == 0 )); then
+(( PLAYER_TEMP_melee_armor += ###ATTR_LEVEL### )) ; fi
+###ENDIF
+
+###IF ITEM_QUALITY > 4
+if (( (###ATTR_ID###_hit_counter % 10) == 0 )); then
+(( PLAYER_TEMP_critical_melee_damage += 25 * ###ATTR_LEVEL### )) ; fi
+###ENDIF
+
+###DELEGATE ON_BATTLE_BEGIN
+###ATTR_ID###_hit_counter=0
+
+###DELEGATE ON_BATTLE_END
+unset ###ATTR_ID###_hit_counter
+
+###DELEGATE ON_RELOAD
+(( PLAYER_TEMP_melee_damage += ###ATTR_ID###_hit_counter * ###ATTR_LEVEL### ))
+
+###IF ITEM_QUALITY > 2
+(( PLAYER_TEMP_melee_armor += (###ATTR_ID###_hit_counter / 5) * ###ATTR_LEVEL### ))
+###ENDIF
+
+###IF ITEM_QUALITY > 4
+(( PLAYER_TEMP_critical_melee_damage += (###ATTR_ID###_hit_counter / 10) * 25 * ###ATTR_LEVEL### ))
+###ENDIF
+
+###DELEGATE property_list
+###ATTR_ID### generic_item_property ###ATTR_LEVEL### ON_HIT
+###ENDDELEGATE
+###END__ON_HIT__
 
 
-#BEGIN__ON_STRIKE__
-#END__ON_STRIKE__
+###BEGIN__ON_STRIKE__
+###END__ON_STRIKE__
 
 
-#BEGIN__ON_BATTLE_BEGIN__
-#END__ON_BATTLE_BEGIN__
+###BEGIN__ON_BATTLE_BEGIN__
+###END__ON_BATTLE_BEGIN__
 
-#BEGIN__ON_BATTLE_END__
-#END__ON_BATTLE_END__
-
-
-#BEGIN__ON_KILL__
-#END__ON_KILL__
+###BEGIN__ON_BATTLE_END__
+###END__ON_BATTLE_END__
 
 
-#BEGIN__ON_DEATH_INV__
-#END__ON_DEATH_INV__
+###BEGIN__ON_KILL__
+###END__ON_KILL__
 
 
-#BEGIN__ON_DEATH_EQU__
-#END__ON_DEATH_EQU__
+###BEGIN__ON_DEATH_INV__
+###END__ON_DEATH_INV__
 
 
-#BEGIN__ON_LEVELUP__
-#END__ON_LEVELUP__
+###BEGIN__ON_DEATH_EQU__
+###END__ON_DEATH_EQU__
 
 
-#BEGIN__ON_EQUIPPED__
-#B__EQUIP__
-#E__EQUIP__
-#B__UNEQUIP__
-#E__UNEQUIP__
-#END__ON_EQUIPPED__
+###BEGIN__ON_LEVELUP__
+###END__ON_LEVELUP__
 
-#BEGIN__ON_INVENTORY__
-#END__ON_INVENTORY__
+
+###BEGIN__ON_EQUIPPED__
+###B__EQUIP__
+###E__EQUIP__
+###B__UNEQUIP__
+###E__UNEQUIP__
+###END__ON_EQUIPPED__
+
+###BEGIN__ON_INVENTORY__
+###END__ON_INVENTORY__
